@@ -45,7 +45,8 @@ export const ButtonLogin = styled.button`
     width: 100px;
     height: 30px;
 
-    background-color: #24f005;
+    color: #ffff;
+    background-color: #228B22;
     border: 0px;
     border-radius: 4px;
 
