@@ -9,8 +9,6 @@ export const Container = styled.div`
     
     height: 90vh;
     
-    
-    
 `
 export const FormContainer = styled.form`
     display: flex;

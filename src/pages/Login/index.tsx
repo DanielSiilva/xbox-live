@@ -3,6 +3,8 @@ import * as zod from 'zod'
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { api } from '../../lib/axios'
+
 import {
     Container,
     FormContainer,
@@ -10,6 +12,8 @@ import {
     NoCount, 
     ButtonLogin
 } from './styles'
+
+import { useNavigate } from 'react-router-dom'
 
 const loginValidationSchema = zod.object({
     email: zod.string(),
@@ -22,6 +26,8 @@ export type NewLoginData = zod.infer<typeof loginValidationSchema>
 
 export function Login(){
 
+    const navigate = useNavigate()
+
     const {
         register,
         handleSubmit,
@@ -29,8 +35,13 @@ export function Login(){
         resolver: zodResolver(loginValidationSchema),
       });
 
-    function handleLogin(data: NewLoginData) {
+     async function handleLogin(data: NewLoginData) {
         console.log('login')
+        
+        const response = await api.post('/users/login', data)
+
+        navigate('home')
+        return response
     }
 
     return (
