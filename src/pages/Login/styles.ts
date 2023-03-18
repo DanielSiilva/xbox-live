@@ -57,10 +57,21 @@ export const NoCount = styled.div`
     justify-content: center;
     gap: 0.2rem;
 
-    a{
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-    }
+    margin-top: 0.5rem;
+
+    font-size: 14px;
+`
+
+export const ButtonRegister = styled.button`
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   background: transparent;
+   border: 0px;
+
+   cursor: pointer;
+
+   font-weight: bold;
 
 `

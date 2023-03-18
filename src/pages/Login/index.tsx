@@ -10,7 +10,8 @@ import {
     FormContainer,
     InputContainer, 
     NoCount, 
-    ButtonLogin
+    ButtonLogin,
+    ButtonRegister
 } from './styles'
 
 import { useNavigate } from 'react-router-dom'
@@ -44,6 +45,10 @@ export function Login(){
         return response
     }
 
+    function gotoPageCreateUser(){
+        navigate('createUser')
+    }
+
     return (
         <Container>
              <FormContainer onSubmit={handleSubmit(handleLogin)}>
@@ -72,11 +77,9 @@ export function Login(){
              <NoCount>
                 <span>Não tenha conta?</span>
 
-                <p>
-                    <a href="">
-                        Registre-se
-                    </a>
-                </p>
+                <ButtonRegister onClick={gotoPageCreateUser}>
+                    Registre-se
+                </ButtonRegister>
              </NoCount>
         </Container>
     )
