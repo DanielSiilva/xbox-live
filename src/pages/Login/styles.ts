@@ -57,7 +57,7 @@ export const NoCount = styled.div`
     justify-content: center;
     gap: 0.2rem;
 
-    margin-top: 0.5rem;
+    margin-top: 0.8rem;
 
     font-size: 14px;
 `
