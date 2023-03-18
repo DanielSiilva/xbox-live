@@ -1,12 +1,14 @@
+import {BrowserRouter} from 'react-router-dom'
 
+import {Router} from './Router/Routes'
 
 export function App() {
   
 
   return (
-    <>
-      <h1>Home</h1>
-    </>
+    <BrowserRouter>
+      <Router/>
+    </BrowserRouter>
   )
 }
 
