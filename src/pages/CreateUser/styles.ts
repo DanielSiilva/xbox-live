@@ -69,3 +69,25 @@ export const ButtonLogin = styled.button`
    text-transform: uppercase;
 
 `
+
+export const InputCheck = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+
+    width: 50%;
+
+    input{
+        cursor: pointer;
+    }
+
+    label{
+
+        
+        white-space: nowrap;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+`

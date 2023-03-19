@@ -24,7 +24,7 @@ import React, {
   }
   
   interface AuthContextData {
-    register: ({cpf,email,isAdmin, name, password}:RegisterData) => Promise<any>;
+    registerUser: ({cpf,email,isAdmin, name, password}:RegisterData) => Promise<any>;
     logout: () => void;
     authenticated: boolean;
     login: ({email, password}:LoginData) => Promise<string | void>;
@@ -73,7 +73,7 @@ import React, {
       setToken(undefined);
     }, []);
   
-    const register = async ({name,cpf,email,isAdmin,password}:RegisterData) => {
+    const registerUser = async ({name,cpf,email,isAdmin,password}:RegisterData) => {
 
       try {
         const response = await api.post("/users", { email, password, cpf, name, isAdmin });
@@ -94,7 +94,7 @@ import React, {
           authenticated,
           login: handleLogin,
           logout: handleLogout,
-          register
+          registerUser
         }}
       >
         {children}

@@ -3,54 +3,63 @@ import * as zod from 'zod'
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { api } from '../../lib/axios'
-
-
 
 import {
     Container,
     FormContainer,
     ButtonLogin,
     NoCount,
-    ButtonCreate
+    ButtonCreate,
+    InputCheck
 
 } from './styles'
 
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../Hooks/UseAuth/useAuth'
 
 const createUserValidationSchema = zod.object({
-    name: zod.string(),
-    email: zod.string(),
-    password: zod.string(),
-    cpf: zod.number(),
+    email: zod.string(), 
+    password: zod.string(), 
+    cpf: zod.string(), 
+    name: zod.string(), 
+    isAdmin: zod.boolean()
 })
 
 
-export type CreateUserData = zod.infer<typeof createUserValidationSchema>
+export type RegisterData = zod.infer<typeof createUserValidationSchema>
 
-interface User {
-    name: string,
-    email: string,
-    password: string,
-    cpf:number
-}
 
 
 export function CreateUse(){
+    const {registerUser} = useAuth()
+
     const navigate = useNavigate()
 
     const {
         register,
         handleSubmit,
         reset
-      } = useForm<CreateUserData>({
+      } = useForm<RegisterData>({
         resolver: zodResolver(createUserValidationSchema),
       });
 
 
-      async function handleCreateUser(data: CreateUserData) {
-        console.log(data);
-        navigate('/')
+      async function handleCreateUser(data: RegisterData) {
+        const {email, cpf, isAdmin, name, password} = data
+
+        try {
+
+            const response = await registerUser({email, cpf, isAdmin, name, password})
+            
+            alert('usuario criado com sucesso')
+            reset()
+            navigate('/')
+            return response
+            
+        } catch (error) {
+            alert("Erro ao cadastrar usuario")
+        }
+        
 
     }
 
@@ -83,9 +92,18 @@ export function CreateUse(){
                 <input
                     placeholder='Digite seu CPF'
                     required
-                    {...register('cpf', {valueAsNumber: true})}
+                    {...register('cpf')}
                       
                 />
+
+                <InputCheck>
+                    <input 
+                        {...register('isAdmin')}
+                        type='checkbox'
+                    />
+                    <label>Cadastrar como admin?</label>
+                </InputCheck>
+                
 
                 <ButtonCreate type='submit' >
                     inscreva-se
