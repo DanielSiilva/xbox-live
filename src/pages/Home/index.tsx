@@ -11,8 +11,9 @@ export function Home (){
 
 
     return (
-        <div>
+        <Container>
             <Header />
-        </div>
+            
+        </Container>
     )
 }
