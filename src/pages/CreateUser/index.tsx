@@ -28,6 +28,12 @@ const createUserValidationSchema = zod.object({
 
 export type CreateUserData = zod.infer<typeof createUserValidationSchema>
 
+interface User {
+    name: string,
+    email: string,
+    password: string,
+    cpf:number
+}
 
 
 export function CreateUse(){
@@ -44,8 +50,8 @@ export function CreateUse(){
 
       async function handleCreateUser(data: CreateUserData) {
         console.log(data);
-
         navigate('/')
+
     }
 
     function gotoPageLogin(){
