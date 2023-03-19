@@ -34,15 +34,21 @@ export function Login(){
         handleSubmit,
       } = useForm<NewLoginData>({
         resolver: zodResolver(loginValidationSchema),
-      });
+    });
 
-     async function handleLogin(data: NewLoginData) {
+    async function handleLogin(data: NewLoginData) {
         console.log('login')
         
-        const response = await api.post('/users/login', data)
+        try {
+            const response = await api.post('/users/login', data)
 
-        navigate('home')
-        return response
+            navigate('home')
+            alert(`Login realizado com sucessso`)
+            return response
+  
+        } catch (error) {
+            alert('Email ou senha incorretos')
+        }
     }
 
     function gotoPageCreateUser(){
@@ -64,6 +70,7 @@ export function Login(){
                     <input
                         placeholder='senha'
                         {...register('password')}
+                        type='password'
                         required
                     />
                 </InputContainer>
