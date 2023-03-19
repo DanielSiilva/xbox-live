@@ -1,6 +1,7 @@
 
 
 import { Header } from '../../components/Header'
+import { Filter } from './components/Filter'
 
 import {
     Container
@@ -14,6 +15,9 @@ export function Home (){
         <Container>
             <Header />
             
+            <div>
+                <Filter />
+            </div>
         </Container>
     )
 }

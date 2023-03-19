@@ -1,4 +1,18 @@
+
+import {
+    Container
+
+} from './styles'
+
+
 export function Filter (){
 
-    return (<></>)
+    return (
+        <Container>
+            <button> Todos</button>
+            <button> RPG</button>
+            <button>Aventuras</button>
+            <button>Gueraa</button>
+        </Container>
+    )
 }
