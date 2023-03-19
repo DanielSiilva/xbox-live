@@ -1,9 +1,8 @@
 import * as zod from 'zod'
-
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { api } from '../../lib/axios'
+
 
 import {
     Container,
@@ -15,6 +14,8 @@ import {
 } from './styles'
 
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../context/AuthContext'
+import { ReactNode } from 'react'
 
 const loginValidationSchema = zod.object({
     email: zod.string(),
@@ -24,8 +25,12 @@ const loginValidationSchema = zod.object({
 
 export type NewLoginData = zod.infer<typeof loginValidationSchema>
 
+interface LoginProps {
+    children: ReactNode;
+}
 
-export function Login(){
+export function Login({children}:LoginProps){
+    const {authenticated, login} = useAuthContext()
 
     const navigate = useNavigate()
 
@@ -40,12 +45,10 @@ export function Login(){
         console.log('login')
         
         try {
-            const response = await api.post('/users/login', data)
-
+            alert('login realizado com sucesso')
+            login(data)
+           
             navigate('home')
-            alert(`Login realizado com sucessso`)
-            return response
-  
         } catch (error) {
             alert('Email ou senha incorretos')
         }
@@ -54,6 +57,11 @@ export function Login(){
     function gotoPageCreateUser(){
         navigate('createUser')
     }
+
+
+    if (authenticated) {
+        return <>{children}</>;
+      }
 
     return (
         <Container>
