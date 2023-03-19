@@ -25,18 +25,19 @@ export const NavContainer = styled.div`
     justify-content: center;
     gap: 2rem;
 
-    button {
-        padding: 0.5rem;
-        cursor: pointer;
+`
 
-        background: transparent;
-        border: 1px solid #2bc8c1;
-        border-radius: 8px;
-        color: white;
+export const Button = styled.button`
+    padding: 0.5rem;
+    cursor: pointer;
 
-        font-size: 14px;
-        font-weight: bold;
-    }
+    background: transparent;
+    border: 1px solid #2bc8c1;
+    border-radius: 8px;
+    color: white;
 
+    font-size: 14px;
+    font-weight: bold;
+    
 `
 

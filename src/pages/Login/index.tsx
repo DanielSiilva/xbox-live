@@ -26,7 +26,7 @@ const loginValidationSchema = zod.object({
 export type NewLoginData = zod.infer<typeof loginValidationSchema>
 
 interface LoginProps {
-    children: ReactNode;
+    children?: ReactNode;
 }
 
 export function Login({children}:LoginProps){
