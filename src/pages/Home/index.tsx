@@ -18,21 +18,32 @@ import {
 
 
 
+
 export function Home (){
     const [games, setGames] = useState<GamesDataTypes[]>([])
     
-    async function fetchProfile(){
+    async function fetchGames(){
         const response = await api.get('/games')
         setGames(response.data)
     }
+
+   async function fetchDeleteGame(id: number){
+    try {
+        const response = await api.delete(`/games/${id}`)
+        alert('Game excluído com sucesso')
+        return response
+    } catch (error) {
+        alert('Erro ao exluir o game')
+    }
+   }
 
     const sizeGames = games.length > 0
 
 
     useEffect(() => {
-        fetchProfile()
-    }, [])
-
+        fetchGames()
+        
+    }, [games])
 
 
     return (
@@ -49,6 +60,8 @@ export function Home (){
                         <CardGames 
                             key={game.id}
                             games={game}
+                            handleDeleteGame={fetchDeleteGame}
+
                         />
                     )}) : <NoItems><h1>Carregando...</h1></NoItems>}
                     

@@ -1,6 +1,8 @@
 
-import { useContext } from 'react'
+import { useContext} from 'react'
 import { favoriteContext } from '../../../../context/FavoriteContex'
+
+
 import {
     Container, 
     ImageGame, 
@@ -8,7 +10,7 @@ import {
     Description, 
     ImgBannerTrailer,
     ButtonAddFavorite,
-    ButtonRemoveFavorite
+    ButtonRemove,
 } from './styles'
 
 
@@ -26,11 +28,13 @@ interface GamesTypes {
 
 interface GamesProps {
     games: GamesTypes
+    handleDeleteGame : (id: number) => void
 }
 
 
-export function CardGames ({games}:GamesProps){
+export function CardGames ({games, handleDeleteGame}:GamesProps){
     const {favorites, handleAddToFavorites, handleRemoveFavorites} = useContext(favoriteContext)
+
 
     const isFavorite = favorites.some((prod) => prod.id === games.id);
 
@@ -48,11 +52,11 @@ export function CardGames ({games}:GamesProps){
                     Adionar ao favoritos
                 </ButtonAddFavorite>
                 :
-                <ButtonRemoveFavorite
+                <ButtonRemove
                     onClick={()=>handleRemoveFavorites(games)}
                 >
                     Remover dos favoritos
-                </ButtonRemoveFavorite>
+                </ButtonRemove>
             }
 
             <Description>
@@ -84,6 +88,10 @@ export function CardGames ({games}:GamesProps){
             </ImgBannerTrailer>
 
             <p>Score: {games.imdbScore}</p>
+
+            <ButtonRemove onClick={()=>handleDeleteGame(games.id)}> 
+                Excluir game
+            </ButtonRemove>
             
         </Container>
     )

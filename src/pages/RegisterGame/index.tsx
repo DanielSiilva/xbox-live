@@ -45,7 +45,7 @@ export function RegisterGame (){
         try {
             const response = await api.post('/games', data)
             alert('Game Criado com Sucesso')
-    
+            reset()
             return response
             
         } catch (error) {

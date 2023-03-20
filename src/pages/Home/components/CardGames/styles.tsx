@@ -96,7 +96,7 @@ export const ButtonAddFavorite = styled.button`
   
 `
 
-export const ButtonRemoveFavorite = styled.button`
+export const ButtonRemove = styled.button`
   margin-top: 10px;
   
   min-height: 30px;
