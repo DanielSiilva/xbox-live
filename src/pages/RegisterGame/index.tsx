@@ -13,6 +13,8 @@ import {
     ButtonRegister
 } from './styles'
 
+import { api } from '../../lib/axios'
+
 const RegisterValidationSchema = zod.object({
     title: zod.string(),
     categoria: zod.string(),
@@ -25,11 +27,31 @@ const RegisterValidationSchema = zod.object({
 })
 
 
-export type NewLoginData = zod.infer<typeof RegisterValidationSchema>
+export type NewRegisterGame = zod.infer<typeof RegisterValidationSchema>
 
 
 
 export function RegisterGame (){
+
+    const {
+        register,
+        handleSubmit,
+        reset
+      } = useForm<NewRegisterGame>({
+        resolver: zodResolver(RegisterValidationSchema),
+      });
+
+    async function handleCreateGame(data: NewRegisterGame){
+        try {
+            const response = await api.post('/games', data)
+            alert('Game Criado com Sucesso')
+    
+            return response
+            
+        } catch (error) {
+            alert('Erro ao cadastrar game')
+        }
+    }
     
 
     return (
@@ -39,40 +61,64 @@ export function RegisterGame (){
             <Content>
                 <h1>Register game</h1>
 
-                <FormContainer>
+                <FormContainer onSubmit={handleSubmit(handleCreateGame)}>
                     <input 
                         placeholder='Nome'
+                        {...register('title')}
+                        required
                     />
-
+                    
                     <input 
                         placeholder='Categoria'
+                        list="task-suggestions"
+                        {...register('categoria')}
+                        required
                     />
+
+                    <datalist id="task-suggestions">
+                        <option value="Aventura" />
+                        <option value="RPG" />
+                        <option value="MMORPG" />
+                        <option value="Guerra" />
+                    </datalist>
 
                    <input 
                         placeholder='descrição'
+                        {...register('description')}
+                        required
                     />
 
                     <input 
                         placeholder='imagemUrl'
+                        {...register('CoverImageUrl')}
+                        required
                     />
 
                     <input 
                         type='number'
+                        {...register('year', {valueAsNumber: true})}
+                        required
                     />
 
                     <input 
                         type='number'
+                        {...register('imdbScore', {valueAsNumber: true})}
+                        required
                     />
 
                     <input 
                         placeholder='trailerUrl'
+                        {...register('trailerYouTubeUrl')}
+                        required
                     />
 
                     <input 
                         placeholder='GamePlayUrl'
+                        {...register('gameplayYouTubeUrl')}
+                        required
                     />
 
-                    <ButtonRegister>
+                    <ButtonRegister type='submit'>
                         Register
                     </ButtonRegister>
                 </FormContainer>
