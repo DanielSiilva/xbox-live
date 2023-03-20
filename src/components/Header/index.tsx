@@ -34,6 +34,10 @@ export function Header (){
         navigate('/registerGame')
     }
 
+    function handleToRegisterUserPage(){
+        navigate('/registerUser')
+    }
+
 
     return (
         <Container>
@@ -63,7 +67,12 @@ export function Header (){
                 > 
                     Cadastrar Game
                 </Button>
-                <Button> Cadastrar usuarios</Button>
+
+                <Button 
+                    onClick={handleToRegisterUserPage}
+                > 
+                    Cadastrar usuarios
+                </Button>
             </NavContainer>
         </Container>
     )
