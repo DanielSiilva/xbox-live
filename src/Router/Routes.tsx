@@ -5,7 +5,8 @@ import { Home } from "../pages/Home";
 import { CreateUse } from "../pages/CreateUser";
 import { FavoritePage } from "../pages/Favorites";
 import { RegisterGame } from "../pages/RegisterGame";
-import { RegisterUser } from "../pages/ResgiterUser";
+import { UserPage } from "../pages/UserPage";
+
 
 
 
@@ -22,7 +23,7 @@ export function Router (){
                 <Route  path="/createUser" element ={<CreateUse/>} />
                 <Route  path="/favoritePage" element ={<FavoritePage/>} />
                 <Route  path="/registerGame" element ={<RegisterGame/>} />
-                <Route  path="/registerUser" element ={<RegisterUser/>} />
+                <Route  path="/userPage" element ={<UserPage/>} />
             </Route>
 
         </Routes>

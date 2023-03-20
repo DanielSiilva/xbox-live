@@ -7,7 +7,7 @@ import {
 } from './styles'
 
 
-export function RegisterUser (){
+export function UserPage (){
 
 
     return (

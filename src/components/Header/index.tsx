@@ -35,7 +35,7 @@ export function Header (){
     }
 
     function handleToRegisterUserPage(){
-        navigate('/registerUser')
+        navigate('/userPage')
     }
 
 
