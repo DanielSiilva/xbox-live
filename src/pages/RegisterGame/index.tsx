@@ -1,3 +1,7 @@
+import * as zod from 'zod'
+import {useForm} from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
 
 import { Header } from '../../components/Header'
 
@@ -7,6 +11,21 @@ import {
     Content,
     FormContainer
 } from './styles'
+
+const RegisterValidationSchema = zod.object({
+    title: zod.string(),
+    categoria: zod.string(),
+    description: zod.string(),
+    CoverImageUrl: zod.string(),
+    year: zod.number(),
+    imdbScore: zod.number(),
+    trailerYouTubeUrl: zod.string(),
+    gameplayYouTubeUrl: zod.string()
+})
+
+
+export type NewLoginData = zod.infer<typeof RegisterValidationSchema>
+
 
 
 export function RegisterGame (){
