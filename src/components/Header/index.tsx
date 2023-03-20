@@ -71,7 +71,7 @@ export function Header (){
                 <Button 
                     onClick={handleToRegisterUserPage}
                 > 
-                    Cadastrar usuarios
+                    Usuários
                 </Button>
             </NavContainer>
         </Container>
