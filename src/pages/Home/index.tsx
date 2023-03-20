@@ -21,8 +21,6 @@ import {
 export function Home (){
     const [games, setGames] = useState<GamesDataTypes[]>([])
     
-
-
     async function fetchProfile(){
         const response = await api.get('/games')
         setGames(response.data)
