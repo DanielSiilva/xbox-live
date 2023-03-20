@@ -21,6 +21,12 @@ export function Header (){
         navigate('/')
     }
 
+    function handleToFavoritePage(){
+        logout()
+        navigate('/favoritePage')
+    }
+
+
     return (
         <Container>
             <img  src={Logo} alt='logo xbox'/>
@@ -31,7 +37,9 @@ export function Header (){
                     > Sair
                 </Button>
 
-                <Button> Favoritos</Button>
+                <Button
+                    onClick={handleToFavoritePage}
+                > Favoritos</Button>
                 <Button> Cadastrar</Button>
                 <Button> Cadastrar usuarios</Button>
             </NavContainer>

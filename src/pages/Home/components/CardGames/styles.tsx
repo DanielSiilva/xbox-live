@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -70,5 +72,44 @@ export const ImgBannerTrailer = styled.section`
             white-space: nowrap;
         }
    }
+
+`
+
+
+
+export const ButtonAddFavorite = styled.button`
+  margin-top: 10px;
+
+  min-height: 30px;
+  max-height: 30px;
+
+  cursor: pointer;
+  background-color: green;
+
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+
+  border: 1px solid black;
+  border-radius: 8px;
+
+  
+`
+
+export const ButtonRemoveFavorite = styled.button`
+  margin-top: 10px;
+  
+  min-height: 30px;
+  max-height: 30px;
+
+  cursor: pointer;
+  background-color: red;
+
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+
+  border: 1px solid black;
+  border-radius: 8px;
 
 `

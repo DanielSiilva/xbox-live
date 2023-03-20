@@ -1,10 +1,14 @@
 
+import { useContext } from 'react'
+import { favoriteContext } from '../../../../context/FavoriteContex'
 import {
     Container, 
     ImageGame, 
     Title,
     Description, 
-    ImgBannerTrailer
+    ImgBannerTrailer,
+    ButtonAddFavorite,
+    ButtonRemoveFavorite
 } from './styles'
 
 
@@ -26,7 +30,9 @@ interface GamesProps {
 
 
 export function CardGames ({games}:GamesProps){
+    const {favorites, handleAddToFavorites, handleRemoveFavorites} = useContext(favoriteContext)
 
+    const isFavorite = favorites.some((prod) => prod.id === games.id);
 
     return(
         <Container>
@@ -34,6 +40,21 @@ export function CardGames ({games}:GamesProps){
                 src={games.CoverImageUrl} 
                 alt={games.title}
             />
+
+            {!isFavorite? 
+                <ButtonAddFavorite 
+                    onClick={()=>handleAddToFavorites(games)}
+                >
+                    Adionar ao favoritos
+                </ButtonAddFavorite>
+                :
+                <ButtonRemoveFavorite
+                    onClick={()=>handleRemoveFavorites(games)}
+                >
+                    Remover dos favoritos
+                </ButtonRemoveFavorite>
+            }
+
             <Description>
                 <Title>{games.title}</Title>
                 <p>Descrição: {games.description}</p>

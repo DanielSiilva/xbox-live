@@ -21,8 +21,8 @@ export const FavoriteProvider = ({children}: Props) => {
         setFavorites((state) => [...state, data])
     }
 
-    const handleRemoveFavorites = (data: GamesDataTypes) => {
-        setFavorites((state) => state.filter((item)=> item.id !== data.id))
+    const handleRemoveFavorites = ({id}: GamesDataTypes) => {
+        setFavorites((state) => state.filter((item)=> item.id !== id))
     };
 
   
