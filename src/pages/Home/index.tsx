@@ -12,13 +12,15 @@ import {
     Container, 
     Content, 
     Title, 
-    CardContainer
+    CardContainer,
+    NoItems
 } from './styles'
 
 
 
 export function Home (){
     const [games, setGames] = useState<GamesDataTypes[]>([])
+    
 
 
     async function fetchProfile(){
@@ -26,7 +28,9 @@ export function Home (){
         setGames(response.data)
     }
 
-      
+    const sizeGames = games.length > 0
+
+
     useEffect(() => {
         fetchProfile()
     }, [])
@@ -43,12 +47,13 @@ export function Home (){
                 <Title><h1>Sua lista de jogos</h1></Title>
                 
                 <CardContainer>
-                    {games.map((game) => { return (
+                    {sizeGames ? games.map((game) => { return (
                         <CardGames 
                             key={game.id}
                             games={game}
                         />
-                    )})}
+                    )}) : <NoItems><h1>Carregando...</h1></NoItems>}
+                    
                 </CardContainer>
                 
             </Content>

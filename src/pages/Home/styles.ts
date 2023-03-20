@@ -30,6 +30,14 @@ export const CardContainer = styled.div`
     gap: 1rem;
     padding: 1rem;
 
+`
 
+export const NoItems = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 50vh;
 
 `
