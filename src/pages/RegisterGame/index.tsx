@@ -9,7 +9,8 @@ import { Header } from '../../components/Header'
 import {
     Container,
     Content,
-    FormContainer
+    FormContainer,
+    ButtonRegister
 } from './styles'
 
 const RegisterValidationSchema = zod.object({
@@ -70,6 +71,10 @@ export function RegisterGame (){
                     <input 
                         placeholder='GamePlayUrl'
                     />
+
+                    <ButtonRegister>
+                        Register
+                    </ButtonRegister>
                 </FormContainer>
             </Content>
         </Container>
