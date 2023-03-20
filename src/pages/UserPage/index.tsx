@@ -1,21 +1,26 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import { api } from '../../lib/axios'
 
 import { UserTypes } from '../../@types/UserTypes'
 
 import { Header } from '../../components/Header'
-import { api } from '../../lib/axios'
 import { UserCar } from './components/UserCard'
 
 import {
     Container,
     Content,
-    CardContainer
+    CardContainer,
+    TittleButton,
+    ButtonCreateUser
 } from './styles'
 
 
 export function UserPage (){
     const [user, setUser] = useState<UserTypes[]>([])
 
+    const navigate = useNavigate()
 
     async function fetchUser(){
         const response = await api.get('/users')
@@ -23,6 +28,10 @@ export function UserPage (){
     }
 
     const userSize = user.length > 0
+
+    function gotoPageCreateUser(){
+        navigate('/createUser')
+    }
 
     useEffect(() => {
         fetchUser()
@@ -34,7 +43,14 @@ export function UserPage (){
             <Header />
 
             <Content>
-                <h1>Lista de usuários</h1>
+                <TittleButton> 
+                    <h1>Lista de usuários</h1>
+
+                    <ButtonCreateUser onClick={gotoPageCreateUser}>
+                        Criar novo usuário
+                    </ButtonCreateUser>
+
+                </TittleButton>
                 
                 <CardContainer>
                     {userSize ? 
