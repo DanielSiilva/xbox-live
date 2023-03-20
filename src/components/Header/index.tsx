@@ -16,6 +16,10 @@ export function Header (){
 
     const navigate = useNavigate()
 
+    function handleHome(){
+        navigate('/home')
+    }
+
     function handleLogout(){
         logout()
         navigate('/')
@@ -26,6 +30,10 @@ export function Header (){
         navigate('/favoritePage')
     }
 
+    function handleToRegisterGamePage(){
+        navigate('/registerGame')
+    }
+
 
     return (
         <Container>
@@ -33,14 +41,28 @@ export function Header (){
 
             <NavContainer>
                 <Button
+                    onClick={handleHome}
+                > 
+                    Home
+                </Button>
+
+                <Button
                     onClick={handleLogout}
-                    > Sair
+                > 
+                    Sair
                 </Button>
 
                 <Button
                     onClick={handleToFavoritePage}
-                > Favoritos</Button>
-                <Button> Cadastrar</Button>
+                > 
+                    Favoritos
+                </Button>
+
+                <Button
+                    onClick={handleToRegisterGamePage}
+                > 
+                    Cadastrar Game
+                </Button>
                 <Button> Cadastrar usuarios</Button>
             </NavContainer>
         </Container>
