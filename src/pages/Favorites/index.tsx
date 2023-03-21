@@ -6,8 +6,6 @@ import { favoriteContext } from "../../context/FavoriteContex"
 import { CardGames } from "../Home/components/CardGames"
 
 
-
-
 import {
     Container,
     Content,
@@ -16,13 +14,15 @@ import {
     NoItems
 } from './styles'
 
+interface GamesProps {
+    handleDeleteGame: (id: number) => void
+}
 
-export function FavoritePage(){
+
+export function FavoritePage({handleDeleteGame}:GamesProps){
     const {favorites} = useContext(favoriteContext)
     
     const favoritesSize = favorites.length > 0
-
-    console.log(favoritesSize)
 
    
     return(
@@ -34,7 +34,12 @@ export function FavoritePage(){
                 <CardContainer>
 
                 {favoritesSize? 
-                    favorites.map((item) => <CardGames key={item.id} games={item}/>) 
+                    favorites.map((item) => 
+                        <CardGames 
+                            key={item.id} 
+                            games={item}
+                            handleDeleteGame={handleDeleteGame}
+                        />) 
                         : 
                     <NoItems>
                         <h1>

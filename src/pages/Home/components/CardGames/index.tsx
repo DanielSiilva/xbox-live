@@ -28,7 +28,7 @@ interface GamesTypes {
 
 interface GamesProps {
     games: GamesTypes
-    handleDeleteGame : (id: number) => void
+    handleDeleteGame: (id: number) => void
 }
 
 
