@@ -21,7 +21,7 @@ export function Router (){
                 <Route  path="/" element ={<Login/>} />
                 <Route  path="/home" element ={<Home/>} />
                 <Route  path="/createUser" element ={<CreateUse/>} />
-                <Route  path="/favoritePage" element ={<FavoritePage/>} />
+                <Route  path="/favoritePage" element ={<FavoritePage handleDeleteGame={() => {}}/>} />
                 <Route  path="/registerGame" element ={<RegisterGame/>} />
                 <Route  path="/userPage" element ={<UserPage/>} />
             </Route>

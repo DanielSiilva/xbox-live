@@ -15,7 +15,7 @@ import {
 } from './styles'
 
 interface GamesProps {
-    handleDeleteGame: (id: number) => void
+    handleDeleteGame: (id: number) => void 
 }
 
 
